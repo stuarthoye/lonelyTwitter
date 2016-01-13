@@ -11,7 +11,13 @@ import java.util.List;
  * This class has member variables to track the text of a tweet & the date of the tweet.
  * It also track whether the tweet is important with a Boolean.
  * Finally, the tweet holds an ArrayList to tack a list of moods associated with it.
+ *
+ * Syntax for list declaration from StackOverflow:
+ * http://stackoverflow.com/questions/858572/how-to-make-a-new-list-in-java
+ * Accessed Jan 12, 2016
+ * Author: Dan Vinton
  */
+
 public abstract class Tweet{
     private String text;
     private Date date;

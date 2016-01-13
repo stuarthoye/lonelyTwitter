@@ -8,4 +8,5 @@ import java.util.Date;
 public interface Moody {
     public Date getDate();
     public void setDate(Date date);
+    public String getMood();
 }
