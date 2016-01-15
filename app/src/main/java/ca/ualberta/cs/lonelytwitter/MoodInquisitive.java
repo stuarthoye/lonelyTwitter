@@ -7,7 +7,7 @@ import java.util.Date;
  * This mood is inquisitive, and inherits from the MoodABC.
  * The two constructors are the default and date-specified constructors.  They reference the super's
  * constructors in order to complete their construction.
- * The format method returns a string with an appropriate ellipsis to describe the mood.
+ * The getMood() method returns a string with an appropriate ellipsis to describe the mood.
  */
 
 public class MoodInquisitive extends MoodABC implements Moody {

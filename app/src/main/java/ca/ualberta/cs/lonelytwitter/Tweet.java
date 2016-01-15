@@ -7,10 +7,10 @@ import java.util.List;
 /**
  * Created by hoye on 1/12/16.
  *
- * This class very closely resembles the Tweet developed in-lab on Tuesday, January 12th.
+ * This class very closely resembles the Tweet developed in-lab on Tuesday, January 12th, 2016.
  * This class has member variables to track the text of a tweet & the date of the tweet.
- * It also track whether the tweet is important with a Boolean.
- * Finally, the tweet holds an ArrayList to tack a list of moods associated with it.
+ * It also tracks whether the tweet is important with a Boolean.
+ * Finally, the tweet holds an ArrayList to track a list of moods associated with it.
  *
  * Syntax for list declaration from StackOverflow:
  * http://stackoverflow.com/questions/858572/how-to-make-a-new-list-in-java
@@ -22,7 +22,7 @@ public abstract class Tweet{
     private String text;
     private Date date;
     protected Boolean isImportant;
-    private List<MoodABC> moods = new ArrayList<MoodABC>();
+    protected List<MoodABC> moods = new ArrayList<MoodABC>();
 
     public abstract Boolean getIsImportant();
 

@@ -8,7 +8,7 @@ import java.util.Date;
  * This mood is triumphant, and inherits from the MoodABC.
  * The two constructors are the default and date-specified constructors.  They reference the super's
  * constructors in order to complete their construction.
- * The format method returns a string with an appropriate exclamation mark to describe the mood.
+ * The getMood() method returns a string with an appropriate exclamation mark to describe the mood.
  */
 
 public class MoodTriumphant extends MoodABC implements Moody {

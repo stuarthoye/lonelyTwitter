@@ -8,6 +8,8 @@ import java.util.Date;
  * This is an abstract base class that represents a mood, and associates a date with that mood.
  * This base class has two constructors, one which takes a date as an argument, and another that
  * defaults the object's date field to today's date.
+ * The mood variable is left uninitialized in the abstract class, since the subclasses will define
+ * it in their constructors.
  * The member variables are encapsulated by protecting them, allowing only inheriting objects to
  * access them.
  * Getter & Setter methods are implemented for this class, and will also be available to any object
