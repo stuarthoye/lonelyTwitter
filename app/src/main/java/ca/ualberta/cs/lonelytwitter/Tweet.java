@@ -33,6 +33,7 @@ public abstract class Tweet{
     }
 
     public Tweet(String text) {
+        this.date = new Date();
         this.text = text;
     }
 
