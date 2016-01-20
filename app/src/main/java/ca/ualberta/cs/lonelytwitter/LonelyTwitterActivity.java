@@ -45,6 +45,7 @@ public class LonelyTwitterActivity extends Activity {
 		bodyText = (EditText) findViewById(R.id.body);              // instantiation of components
 		Button saveButton = (Button) findViewById(R.id.save);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
+        loadFromFile();
 
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
@@ -55,9 +56,9 @@ public class LonelyTwitterActivity extends Activity {
 				ImportantTweet latestImportantTweet = new ImportantTweet(text);
                 tweets.add(latestTweet);                                        // NEW LINE
                 adapter.notifyDataSetChanged();
-				saveInFile(text, new Date(System.currentTimeMillis()));         // call to method that saves data.
+                saveInFile();
+				// saveInFile(text, new Date(System.currentTimeMillis()));         // call to method that saves data.
 				// finish();
-
 			}
 		});
 	}
@@ -79,7 +80,9 @@ public class LonelyTwitterActivity extends Activity {
 			BufferedReader in = new BufferedReader(new InputStreamReader(fis));
             Gson gson = new Gson();
 
-            // citation too long from TA's example
+            // Code from:
+            // https://google-gson.googlecode.com/svn/trunk/gson/docs/javadocs/com/google/gson/Gson.html
+            // Date: Jan 19, 2016
             Type listType = new TypeToken<ArrayList<NormalTweet>>() {}.getType();
             tweets = gson.fromJson(in, listType);
 
@@ -98,11 +101,11 @@ public class LonelyTwitterActivity extends Activity {
 			// e.printStackTrace();
             throw new RuntimeException();
 		}
-		return tweets.toArray(new String[tweets.size()]);
+		// return tweets.toArray(new String[tweets.size()]);
 	}
 
     // Saves data as a string; should be saved as GSON file.
-	private void saveInFile(String text, Date date) {
+	private void saveInFile() {
 		try {
             FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(fos));
