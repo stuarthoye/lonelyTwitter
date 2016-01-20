@@ -23,8 +23,8 @@ import android.widget.ListView;
 public class LonelyTwitterActivity extends Activity {
 
 	private static final String FILENAME = "file.sav";
-	private EditText bodyText;
-	private ListView oldTweetsList;
+	private EditText bodyText;							// reference to editbox onscreen
+	private ListView oldTweetsList;						// reference to list onscreen
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -32,7 +32,7 @@ public class LonelyTwitterActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		bodyText = (EditText) findViewById(R.id.body);
+		bodyText = (EditText) findViewById(R.id.body);              // instantiation of components
 		Button saveButton = (Button) findViewById(R.id.save);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 
@@ -43,13 +43,14 @@ public class LonelyTwitterActivity extends Activity {
 				String text = bodyText.getText().toString();
 				Tweet latestTweet = new NormalTweet(text);
 				ImportantTweet latestImportantTweet = new ImportantTweet(text);
-				saveInFile(text, new Date(System.currentTimeMillis()));
+				saveInFile(text, new Date(System.currentTimeMillis()));         // call to method that saves data.
 				finish();
 
 			}
 		});
 	}
 
+	// May be called many times; file can be stopped without being destroyed.
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
@@ -80,7 +81,8 @@ public class LonelyTwitterActivity extends Activity {
 		}
 		return tweets.toArray(new String[tweets.size()]);
 	}
-	
+
+    // Saves data as a string; should be saved as JSON file.
 	private void saveInFile(String text, Date date) {
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME,
