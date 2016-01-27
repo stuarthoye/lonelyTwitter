@@ -25,6 +25,8 @@ public class TweetList {
     }
 
     //  Lab excercise functions
+    //----------------------------------------------------------------------------------------------
+    //  Throws an exception when duplicate added.
     public void addTweet(Tweet tweet) {
         if (tweets.contains(tweet)){
             throw new IllegalArgumentException();
@@ -33,14 +35,18 @@ public class TweetList {
         }
     }
 
+    //  Returns a list of tweets in the Tweetlist, in chronological order.
     public ArrayList<Tweet> getTweets(){
         return new ArrayList<Tweet>();
     }
 
+    //  Should remove a tweet that exists inside the tweetlist.
+    //  Will throw an exception when told to delete a tweet that doesn't exist.
     public void removeTweet(Tweet tweet){
 
     }
 
+    //  Returns an integer count of the tweets in the tweet list.
     public int getCount() {
         return -1;
     }
