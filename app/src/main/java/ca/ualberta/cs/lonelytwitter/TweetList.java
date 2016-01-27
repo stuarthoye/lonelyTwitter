@@ -23,4 +23,21 @@ public class TweetList {
     public void deleteTweet(Tweet tweet){
         tweets.remove(tweet);
     }
+
+    //  Lab excercise functions
+    public void addTweet(Tweet tweet) {
+
+    }
+
+    public ArrayList<Tweet> getTweets(){
+        return new ArrayList<Tweet>();
+    }
+
+    public void removeTweet(Tweet tweet){
+
+    }
+
+    public int getCount() {
+        return -1;
+    }
 }
