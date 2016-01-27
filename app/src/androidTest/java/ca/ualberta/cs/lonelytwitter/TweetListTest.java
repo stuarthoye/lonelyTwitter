@@ -101,9 +101,14 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
         //  Test that empty TweetList returns empty list.
         assertEquals(tweets.getTweets(), new ArrayList<Tweet>());
 
-        Tweet tweet1 = new NormalTweet("Hello");
-        Tweet tweet2 = new NormalTweet("Hello II");
-        Tweet tweet3 = new NormalTweet("Hello III");
+        //  NB: dates passed in are not in chronological order
+        Date testDate = new Date();
+        testDate.setTime(1);
+        Tweet tweet1 = new NormalTweet(testDate, "Hello");
+        testDate.setTime(2);
+        Tweet tweet2 = new NormalTweet(testDate, "Hello II");
+        testDate.setTime(0);
+        Tweet tweet3 = new NormalTweet(testDate, "Hello III");
 
         // Test that adding one tweet returns a list with one tweet.
         tweets.addTweet(tweet1);
@@ -119,7 +124,9 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
         assertEquals(2, tweets.getTweets().size());
 
         //  Test that the items are in chronological order.
-        // TODO
+        ArrayList<Tweet> returnedList = tweets.getTweets();
+        assertEquals(tweet3, returnedList.get(0));
+        assertEquals(tweet2, returnedList.get(1));
 
         //  Test that removing all the tweets reduces the list to 0.
         tweets.deleteTweet(tweet2);
