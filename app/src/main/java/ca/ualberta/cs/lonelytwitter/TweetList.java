@@ -16,5 +16,11 @@ public class TweetList {
         return tweets.contains(tweet);
     }
 
+    public Tweet getTweet(int index){
+        return new NormalTweet("X");
+    }
 
+    public void deleteTweet(Tweet tweet){
+
+    }
 }
