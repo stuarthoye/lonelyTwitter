@@ -3,6 +3,7 @@ package ca.ualberta.cs.lonelytwitter;
 import android.test.ActivityInstrumentationTestCase2;
 
 import java.security.BasicPermission;
+import java.util.ArrayList;
 
 /**
  * Created by hoye on 1/26/16.
@@ -73,11 +74,35 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
     }
 
     public void testAddTweet() {
+        //  Setup
+        TweetList tweets = new TweetList();
+        Tweet tweet = new NormalTweet("Hello");
+        tweets.addTweet(tweet);
+
+        //  Test that the tweet is in the list
+        assertTrue(tweets.hasTweet(tweet));
+
+        // Try to get the exception thrown by adding the same tweet again.
+        try {
+            tweets.addTweet(tweet);
+        } catch (IllegalArgumentException e) {
+            assertTrue(Boolean.TRUE);
+            return;
+        }
         assertTrue(Boolean.FALSE);
     }
 
     public void testGetTweets() {
-        assertFalse(Boolean.TRUE);
+        //  Setup
+        TweetList tweets = new TweetList();
+
+        //  Test that empty TweetList returns empty list
+        assertEquals(tweets.getTweets(), new ArrayList<Tweet>());
+
+        Tweet tweet = new NormalTweet("Hello");
+        tweets.addTweet(tweet);
+
+        assertTrue(Boolean.FALSE);
     }
 
     public void testRemoveTweet() {
