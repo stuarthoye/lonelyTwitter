@@ -128,11 +128,38 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
     }
 
     public void testRemoveTweet() {
-        assertTrue(Boolean.FALSE);
+        //  Setup
+        TweetList tweets = new TweetList();
+        Tweet tweet = new NormalTweet("Hello");
+        tweets.add(tweet);
+
+        //  Test that there exists something to delete
+        assertTrue(tweets.hasTweet(tweet));
+
+        //  Remove it
+        tweets.removeTweet(tweet);
+
+        //  Test that it's been removed
+        assertFalse(tweets.hasTweet(tweet));
     }
 
     public void testGetCount() {
-        assertFalse(Boolean.TRUE);
+        //  Setup
+        TweetList tweets = new TweetList();
+        Tweet tweet = new NormalTweet("Hello");
+
+        // Test that the empty list has size 0
+        assertEquals(0, tweets.getCount());
+
+        //  Test that adding a tweet makes getCount() return 1
+        tweets.add(tweet);
+        assertEquals(1, tweets.getCount());
+
+        //  Test that removing a tweet reduces the value that getCount() returns.
+        tweets.removeTweet(tweet);
+        assertEquals(0, tweets.getCount());
+
+
     }
 }
 
