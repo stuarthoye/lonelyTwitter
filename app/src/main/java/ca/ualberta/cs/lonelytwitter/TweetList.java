@@ -17,10 +17,10 @@ public class TweetList {
     }
 
     public Tweet getTweet(int index){
-        return new NormalTweet("X");
+        return tweets.get(index);
     }
 
     public void deleteTweet(Tweet tweet){
-
+        tweets.remove(tweet);
     }
 }

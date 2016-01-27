@@ -46,7 +46,7 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
         //  Test that the tweet is in the list
         assertTrue(tweets.hasTweet(tweet));
 
-        Tweet returnedTweet = tweets.getTweet(tweet);
+        Tweet returnedTweet = tweets.getTweet(0);
 
         //  Test the function
         //  assertEquals(tweet, returnedTweet);                     // Not testing that objs are ==
