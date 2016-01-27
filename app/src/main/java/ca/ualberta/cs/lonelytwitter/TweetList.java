@@ -26,7 +26,11 @@ public class TweetList {
 
     //  Lab excercise functions
     public void addTweet(Tweet tweet) {
-
+        if (this.hasTweet(tweet)){
+            throw new IllegalArgumentException();
+        } else {
+            tweets.add(tweet);
+        }
     }
 
     public ArrayList<Tweet> getTweets(){
