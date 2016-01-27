@@ -18,7 +18,12 @@ import java.util.List;
  * Author: Dan Vinton
  */
 
-public abstract class Tweet{
+//  Try to implement an override of the compareTo method
+//  Implement the Comparable interface
+//  See: http://beginnersbook.com/2013/12/java-arraylist-of-object-sort-example-comparable-and-comparator/
+//  Date: Jan 26, 2016
+
+public abstract class Tweet {
     private String text;
     private Date date;
     protected Boolean isImportant;

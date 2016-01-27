@@ -1,6 +1,7 @@
 package ca.ualberta.cs.lonelytwitter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by hoye on 1/26/16.
@@ -38,6 +39,8 @@ public class TweetList {
     //  Returns a list of tweets in the Tweetlist, in chronological order.
     public ArrayList<Tweet> getTweets(){
         //  TODO: Ensure that these are sorted by date.
+        // Collections.sort(tweets);
+
         return this.tweets;
     }
 

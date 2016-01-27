@@ -18,4 +18,5 @@ public class ImportantTweet extends Tweet implements Tweetable {
     public Boolean getIsImportant() {
         return Boolean.TRUE;
     }
+
 }
