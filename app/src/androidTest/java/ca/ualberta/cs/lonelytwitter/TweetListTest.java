@@ -2,6 +2,8 @@ package ca.ualberta.cs.lonelytwitter;
 
 import android.test.ActivityInstrumentationTestCase2;
 
+import java.security.BasicPermission;
+
 /**
  * Created by hoye on 1/26/16.
  */
@@ -10,7 +12,7 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
         super(LonelyTwitterActivity.class);
     }
 
-    public void testAddTweet() {
+    public void testAdd() {
         //  Setup
         TweetList tweets = new TweetList();
         Tweet tweet = new NormalTweet("Hello");
@@ -68,6 +70,22 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
 
         //  Test that it's been removed
         assertFalse(tweets.hasTweet(tweet));
+    }
+
+    public void testAddTweet() {
+        assertTrue(Boolean.FALSE);
+    }
+
+    public void testGetTweets() {
+        assertFalse(Boolean.TRUE);
+    }
+
+    public void testRemoveTweet() {
+        assertTrue(Boolean.FALSE);
+    }
+
+    public void testGetCount() {
+        assertFalse(Boolean.TRUE);
     }
 }
 
