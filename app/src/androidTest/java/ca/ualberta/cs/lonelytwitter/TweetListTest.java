@@ -131,10 +131,17 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
         //  Setup
         TweetList tweets = new TweetList();
         Tweet tweet = new NormalTweet("Hello");
-        tweets.add(tweet);
 
-        //  Test that there exists something to delete
-        assertTrue(tweets.hasTweet(tweet));
+        //  Test that the IllegalArgumentException is thrown
+        try {
+            tweets.removeTweet(tweet);
+        } catch (IllegalArgumentException e) {
+
+        } finally {
+            // assertTrue(Boolean.FALSE);       // TODO: figure out how to exit the except block
+        }
+
+        tweets.add(tweet);
 
         //  Remove it
         tweets.removeTweet(tweet);

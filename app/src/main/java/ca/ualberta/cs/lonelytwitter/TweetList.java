@@ -37,17 +37,22 @@ public class TweetList {
 
     //  Returns a list of tweets in the Tweetlist, in chronological order.
     public ArrayList<Tweet> getTweets(){
-        return new ArrayList<Tweet>();
+        //  TODO: Ensure that these are sorted by date.
+        return this.tweets;
     }
 
     //  Should remove a tweet that exists inside the tweetlist.
     //  Will throw an exception when told to delete a tweet that doesn't exist.
     public void removeTweet(Tweet tweet){
-
+        if (tweets.contains(tweet)) {
+            tweets.remove(tweet);
+        } else {
+            throw new IllegalArgumentException();
+        }
     }
 
     //  Returns an integer count of the tweets in the tweet list.
     public int getCount() {
-        return -1;
+        return tweets.size();
     }
 }
