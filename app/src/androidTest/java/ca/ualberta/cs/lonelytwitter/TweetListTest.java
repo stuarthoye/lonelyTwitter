@@ -1,9 +1,11 @@
 package ca.ualberta.cs.lonelytwitter;
 
+import android.os.Debug;
 import android.test.ActivityInstrumentationTestCase2;
 
 import java.security.BasicPermission;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by hoye on 1/26/16.
@@ -96,13 +98,33 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
         //  Setup
         TweetList tweets = new TweetList();
 
-        //  Test that empty TweetList returns empty list
+        //  Test that empty TweetList returns empty list.
         assertEquals(tweets.getTweets(), new ArrayList<Tweet>());
 
-        Tweet tweet = new NormalTweet("Hello");
-        tweets.addTweet(tweet);
+        Tweet tweet1 = new NormalTweet("Hello");
+        Tweet tweet2 = new NormalTweet("Hello II");
+        Tweet tweet3 = new NormalTweet("Hello III");
 
-        assertTrue(Boolean.FALSE);
+        // Test that adding one tweet returns a list with one tweet.
+        tweets.addTweet(tweet1);
+        assertEquals(1, tweets.getTweets().size());
+
+        //  Test adding two more.
+        tweets.addTweet(tweet2);
+        tweets.addTweet(tweet3);
+        assertEquals(3, tweets.getTweets().size());
+
+        //  Test that the removal of one tweet reduces the size.
+        tweets.deleteTweet(tweet1);
+        assertEquals(2, tweets.getTweets().size());
+
+        //  Test that the items are in chronological order.
+        // TODO
+
+        //  Test that removing all the tweets reduces the list to 0.
+        tweets.deleteTweet(tweet2);
+        tweets.deleteTweet(tweet3);
+        assertEquals(tweets.getTweets(), new ArrayList<Tweet>());
     }
 
     public void testRemoveTweet() {
