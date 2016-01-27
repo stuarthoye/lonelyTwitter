@@ -42,10 +42,10 @@ public class LonelyTwitterActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 
-		bodyText = (EditText) findViewById(R.id.body);              // instantiation of components
+		bodyText = (EditText) findViewById(R.id.body);				// instantiation of components
         oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 		Button saveButton = (Button) findViewById(R.id.save);
-        Button clearButton = (Button) findViewById(R.id.clear);         // reference to clear button
+        Button clearButton = (Button) findViewById(R.id.clear);     // reference to clear button
 
         loadFromFile();
 
