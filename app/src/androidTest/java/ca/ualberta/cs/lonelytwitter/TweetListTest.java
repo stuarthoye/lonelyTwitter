@@ -101,13 +101,13 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
         //  Test that empty TweetList returns empty list.
         assertEquals(tweets.getTweets(), new ArrayList<Tweet>());
 
-        Date testDate = new Date();
-        testDate.setTime(1);
-        Tweet tweet1 = new NormalTweet(testDate, "Hello");
-        testDate.setTime(2);
-        Tweet tweet2 = new NormalTweet(testDate, "Hello II");
-        testDate.setTime(3);
-        Tweet tweet3 = new NormalTweet(testDate, "Hello III");
+        // Note that the times are not fed-in in chronological order.
+        Date first_date = new Date(0);
+        Tweet tweet1 = new NormalTweet(first_date, "Hello");
+        Date second_date = new Date(100);
+        Tweet tweet2 = new NormalTweet(second_date, "Hello II");
+        Date third_date = new Date(300);
+        Tweet tweet3 = new NormalTweet(third_date, "Hello III");
 
         // Test that adding one tweet returns a list with one tweet.
         tweets.addTweet(tweet1);
@@ -118,18 +118,19 @@ public class TweetListTest extends ActivityInstrumentationTestCase2 {
         tweets.addTweet(tweet3);
         assertEquals(3, tweets.getTweets().size());
 
-        //  Test that the removal of one tweet reduces the size.
+        //  Test that getTweets() returns a smaller list after removing a tweet.
         tweets.deleteTweet(tweet1);
         assertEquals(2, tweets.getTweets().size());
 
         //  Test that the items are in chronological order.
         ArrayList<Tweet> returnedList = tweets.getTweets();
-        assertEquals(tweet2, returnedList.get(0));
-        assertEquals(tweet3, returnedList.get(1));
+        tweet1 = returnedList.get(0);
+        tweet2 = returnedList.get(1);
+        assertEquals(-1, tweet1.compareTo(tweet2));
 
         //  Test that removing all the tweets reduces the list to 0.
+        tweets.deleteTweet(tweet1);
         tweets.deleteTweet(tweet2);
-        tweets.deleteTweet(tweet3);
         assertEquals(tweets.getTweets(), new ArrayList<Tweet>());
     }
 

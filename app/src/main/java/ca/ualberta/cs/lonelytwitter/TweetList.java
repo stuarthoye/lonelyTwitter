@@ -38,9 +38,7 @@ public class TweetList {
 
     //  Returns a list of tweets in the Tweetlist, in chronological order.
     public ArrayList<Tweet> getTweets(){
-        //  TODO: Ensure that these are sorted by date.
-        // Collections.sort(tweets);
-
+        Collections.sort(tweets);
         return this.tweets;
     }
 
