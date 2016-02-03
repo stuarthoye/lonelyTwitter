@@ -26,17 +26,57 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * @see LonelyTwitterActivity LonelyTwitterActivity <br>
+ *
+ * This is the controller for the LonelyTwitterActivity <br>
+ *     This object holds member variables:<br>
+ *     <ul>
+ *         <li>FILENAME: to track where to save data</li>
+ *         <li>bodytext: reference to the EditText onscreen</li>
+ *         <li>oldTweetsList: reference to the list onscreen</li>
+ *         <li>tweets: reference to all the tweets</li>
+ *         <li>adapter: facilitates displaying the tweets in the oldTweetsList</li>
+ *     </ul>
+ * <br>
+ *     This object holds the methods:
+ *     <ul>
+ *         <li>onCreate</li>
+ *         <li>onStart</li>
+ *         <li>loadFromFile</li>
+ *         <li>saveInFile</li>
+ *     </ul>
+ *
+ */
 public class LonelyTwitterActivity extends Activity {
 
 	private static final String FILENAME = "file.sav";
-	private EditText bodyText;							// reference to editbox onscreen
-	private ListView oldTweetsList;						// reference to list onscreen
+	private EditText bodyText;
+	private ListView oldTweetsList;
 
     private ArrayList<Tweet> tweets = new ArrayList<Tweet>();   // NEW LINE
     private ArrayAdapter<Tweet> adapter;
 
 
-	/** Called when the activity is first created. */
+	/**
+	 * Called when the activity is first created.
+	 * Overrding method.
+	 * Establishes reference for<br>
+	 *     <ul>
+	 *         <li>bodyText</li>
+	 *         <li>oldTweetsList</li>
+	 *         <li>saveButton</li>
+	 *         <li>clearButton</li>
+	 *     </ul>
+	 * <br>
+	 * Reads info in from the file.
+	 * <br>
+	 * Initializes listeners for:
+	 *     <ul>
+	 *         <li>clearButton</li>
+	 *         <li>saveButton</li>
+	 *     </ul>
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -75,7 +115,11 @@ public class LonelyTwitterActivity extends Activity {
 		});
 	}
 
-	// May be called many times; file can be stopped without being destroyed.
+	/**
+	 * May be called many times; file can be stopped without being destroyed.
+	 * Responsible for ensuring reference across periods of focus.
+ 	 */
+
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
@@ -85,6 +129,14 @@ public class LonelyTwitterActivity extends Activity {
 		oldTweetsList.setAdapter(adapter);
 	}
 
+	/**
+	 * This method coverts a Gson file into objects LonelyTwitter can use.
+	 * Establishes a file input stream at the FILENAME location.
+	 * Calls gson to perform the conversion.
+	 * Initializes the array, tweets, to an empty array if no file exists at FILENAME.
+	 * @exception FileNotFoundException sets tweets to a new ArrayList.
+	 * @exception IOException thrown if some other error in IO.
+	 */
 	private void loadFromFile() {
 		// ArrayList<String> tweets = new ArrayList<String>();
 		try {
@@ -116,7 +168,13 @@ public class LonelyTwitterActivity extends Activity {
 		// return tweets.toArray(new String[tweets.size()]);
 	}
 
-    // Saves data as a string; should be saved as GSON file.
+	/** Saves data as a GSON file.
+	 * Establishes a file output stream, and a buffered writer to do the writing.
+	 * establishes a gson object to perform conversion from objects in use to strings that can be
+	 * written to file.
+	 * @exception FileNotFoundException thrown when file not found.
+	 * @exception IOException thrown if some error in IO found.
+	 */
 	private void saveInFile() {
 		try {
             FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
